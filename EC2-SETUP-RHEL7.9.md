@@ -1,26 +1,25 @@
-# AWS-EC2-SETUP-RHEL7.9.md
+# EC2-SETUP-RHEL7.9.md
 ~~~
-- RHEL 7.9 ±âÁØÀ¸·Î EC2 ÀÎ½ºÅÏ½º¸¦ »ı¼ºÇÏ°í °³¹ßÈ¯°æ ¹× AWS ¼­ºñ½º¸¦ »ç¿ëÇÏ±âÀ§ÇØ ¼³Á¤ÇÏ´Â °úÁ¤À» Á¤¸®ÇÑ ³»¿ë
+- RHEL 7.9 ê¸°ì¤€ìœ¼ë¡œ EC2 ì¸ìŠ¤í„´ìŠ¤ë¥¼ ìƒì„±í•˜ê³  ê°œë°œí™˜ê²½ ë° AWS ì„œë¹„ìŠ¤ë¥¼ ì‚¬ìš©í•˜ê¸°ìœ„í•´ ì„¤ì •í•˜ëŠ” ê³¼ì •ì„ ì •ë¦¬í•œ ë‚´ìš©
 - Instance type : t3.xlarge
-- ºÒ·ı ¼³Á¤
-  Size : 300GB, Type : gp3, IOPS : 10000, Throughput : 1000
+- Disk Info : Size(300GB), Type(gp3), IOPS(10000), Throughput(1000)
 - OS : RHEL-7.9_HVM-20221027-x86_64-0-Access2-GP2
 ~~~
 <br>
 
-## TIMEZONE È®ÀÎ ¹× º¯°æ
+## TIMEZONE í™•ì¸ ë° ë³€ê²½
 ```shell
 $ timedatectl set-timezone Asia/Seoul
 ```
 <br>
 
-## °èÁ¤ Ãß°¡
+## ê³„ì • ì¶”ê°€
 ```shell
-$ useradd -d "È¨ µğ·ºÅä¸®" -s /bin/bash "°èÁ¤¸í"
+$ useradd -d "í™ˆ ë””ë ‰í† ë¦¬" -s /bin/bash "ê³„ì •ëª…"
 ```
 <br>
 
-## ÇÊ¿ä ÆĞÅ°Áö ¼³Ä¡
+## í•„ìš” íŒ¨í‚¤ì§€ ì„¤ì¹˜
 ```shell
 $ yum -y install wget gcc gcc-c++sysstat
 
@@ -33,13 +32,13 @@ $ yum -y install yum-utils
 # AWS CLI
 $ yum -y install less unzip jq
 
-# ÇÑ ÁÙ
+# í•œ ì¤„
 $ yum -y install wget gcc gcc-c++sysstat git openssl-devel bzip2-devel yum-utils less unzip jq
 ```
 
 <br>
 
-## AWS CLI ¼³Ä¡
+## AWS CLI ì„¤ì¹˜
 - https://docs.aws.amazon.com/ko_kr/cli/latest/userguide/getting-started-install.html
 ```shell
 $ curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
@@ -50,15 +49,15 @@ $ aws --version
 ```
 <br>
 
-## lz4-devel ¼³Ä¡
-- ÇØ´ç OS ÀÌ¹ÌÁöÀÇ yum ÀúÀå¼Ò¿¡¼­ Ã£Áö ¸øÇÏ¿© Á÷Á¢ ¼³Ä¡
+## lz4-devel ì„¤ì¹˜
+- í•´ë‹¹ OS ì´ë¯¸ì§€ì˜ yum ì €ì¥ì†Œì—ì„œ ì°¾ì§€ ëª»í•˜ì—¬ ì§ì ‘ ì„¤ì¹˜
 ```shell
 $ wget https://rpmfind.net/linux/centos/7.9.2009/os/x86_64/Packages/lz4-devel-1.8.3-1.el7.x86_64.rpm
 $ rpm -i lz4-devel-1.8.3-1.el7.x86_64.rpm
 ```
 <br>
 
-## CMAKE ¼öµ¿ ¾÷µ¥ÀÌÆ®
+## CMAKE ìˆ˜ë™ ì—…ë°ì´íŠ¸
 ```shell
 $ wget https://github.com/Kitware/CMake/releases/download/v2.26.4/cmake-3.26.4.tar.gz
 $ tar -zxvf cmake-3.26.5.tar.gz
@@ -69,25 +68,25 @@ $ make install
 ```
 <br>
 
-## NATS.io CÅ¬¶óÀÌ¾ğÆ® ÄÄÆÄÀÏ ¹× ¼³Ä¡
+## NATS.io Cí´ë¼ì´ì–¸íŠ¸ ì»´íŒŒì¼ ë° ì„¤ì¹˜
 ```shell
 $ git clone https://github.com/nats-io/nats.c.git
 $ cd nats.c
 $ mkdir build; cd build
-# cmake ÄÄÆÄÀÏ ¿É¼ÇÀº README¿¡¼­ È®ÀÎ ÇÊ¿ä
+# cmake ì»´íŒŒì¼ ì˜µì…˜ì€ READMEì—ì„œ í™•ì¸ í•„ìš”
 $ cmake .. -DNATS_BUILD_WITH_TLS=OFF -DNATS_BUILD_STREAMING=OFF
 $ make install
 ```
 <br>
 
-## docker ¼³Ä¡
+## docker ì„¤ì¹˜
 - https://docs.docker.com/engine/install/centos/
 ```shell
 # add repo
 $ yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
 $ vi /etc/yum.repos.d/docker-ce.repo
 ```shell
-# docker-ce.repo ÆÄÀÏ¿¡ ¾Æ·¡ ³»¿ë Ãß°¡ ÈÄ ÀúÀå (install ¿À·ù·Î Ãß°¡)
+# docker-ce.repo íŒŒì¼ì— ì•„ë˜ ë‚´ìš© ì¶”ê°€ í›„ ì €ì¥ (install ì˜¤ë¥˜ë¡œ ì¶”ê°€)
 [centos-extras]
 name=Centos extras - $basearch
 baseurl=http://mirror.centos.org/centos/7/extras/x86_64
