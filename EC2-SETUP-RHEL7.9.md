@@ -40,6 +40,7 @@ $ yum -y install wget gcc gcc-c++sysstat git openssl-devel bzip2-devel yum-utils
 
 ## AWS CLI 설치
 - https://docs.aws.amazon.com/ko_kr/cli/latest/userguide/getting-started-install.html
+- ec2-user 계정에서 작업
 ```shell
 $ curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
 $ unzip awscliv2.zip; cd aws
@@ -51,6 +52,7 @@ $ aws --version
 
 ## lz4-devel 설치
 - 해당 OS 이미지의 yum 저장소에서 찾지 못하여 직접 설치
+- ec2-user 계정에서 작업
 ```shell
 $ wget https://rpmfind.net/linux/centos/7.9.2009/os/x86_64/Packages/lz4-devel-1.8.3-1.el7.x86_64.rpm
 $ rpm -i lz4-devel-1.8.3-1.el7.x86_64.rpm
@@ -58,6 +60,7 @@ $ rpm -i lz4-devel-1.8.3-1.el7.x86_64.rpm
 <br>
 
 ## CMAKE 수동 업데이트
+- ec2-user 계정에서 작업
 ```shell
 $ wget https://github.com/Kitware/CMake/releases/download/v2.26.4/cmake-3.26.4.tar.gz
 $ tar -zxvf cmake-3.26.5.tar.gz
@@ -69,6 +72,7 @@ $ make install
 <br>
 
 ## NATS.io C클라이언트 컴파일 및 설치
+- ec2-user 계정에서 작업
 ```shell
 $ git clone https://github.com/nats-io/nats.c.git
 $ cd nats.c
@@ -81,6 +85,7 @@ $ make install
 
 ## docker 설치
 - https://docs.docker.com/engine/install/centos/
+- ec2-user 계정에서 작업
 ```shell
 # add repo
 $ yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
