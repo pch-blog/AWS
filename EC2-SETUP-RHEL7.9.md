@@ -1,9 +1,11 @@
-# EC2-SETUP-RHEL7.9.md
+# EC2 Setup RHEL7.9
 ~~~
-- RHEL 7.9 기준으로 EC2 인스턴스를 생성하고 개발환경 및 AWS 서비스를 사용하기위해 설정하는 과정을 정리한 내용
-- Instance type : t3.xlarge
-- Disk Info : Size(300GB), Type(gp3), IOPS(10000), Throughput(1000)
-- OS : RHEL-7.9_HVM-20221027-x86_64-0-Access2-GP2
+- RHEL 7.9 기준으로 EC2 인스턴스를 생성하고 개발 환경 및 AWS 서비스를 사용하기 위해 설정하고 AMI를 생성하는 과정을 정리한 내용입니다.
+- 모든 과정을 진행할 필요 없으며 내용 확인 후 필요한 부분만 진행하세요.
+- EC2 인스턴스 정보
+  Instance type : t3.xlarge
+  Disk Info : Size(300GB), Type(gp3), IOPS(10000), Throughput(1000)
+  OS : RHEL-7.9_HVM-20221027-x86_64-0-Access2-GP2
 ~~~
 <br>
 
@@ -42,9 +44,8 @@ $ yum -y install yum-utils
 $ yum -y install less unzip jq
 
 # 한 줄
-$ yum -y install wget gcc gcc-c++sysstat git openssl-devel bzip2-devel yum-utils less unzip jq
+$ yum -y install wget gcc gcc-c++ sysstat vim git openssl-devel bzip2-devel yum-utils less unzip jq
 ```
-
 <br>
 
 ## AWS CLI 설치
@@ -121,15 +122,7 @@ $ docker version
 ```
 <br>
 
-## RHEL 7.9 Docker Image 다운로드
-- https://catalog.redhat.com/software/containers/ubi7/ubi/5c3592dcd70cc534b3a37814?architecture=amd64&tag=all
-```shell
-$ docker pull registry.access.redhat.com/ubi7/ubi:7.9-1255
-$ docker image tag registry.access.redhat.com/ubi7/ubi:7.9-1255 redhat/ubi7:7.9-1255
-```
-```shell
-$ docker images
-REPOSITORY                            TAG        IMAGE ID       CREATED       SIZE
-registry.access.redhat.com/ubi7/ubi   7.9-1255   3e42ff62a586   4 weeks ago   208MB
-redhat/ubi7                           7.9-1255   3e42ff62a586   4 weeks ago   208MB
-```
+## EC2 이미지 생성 (AMI:Amazon Machine Image)
+- EC2 대쉬보드에서 Instances(인스턴스) -> EC2 선택(체크 박스) -> Ations(작업) -> Image And templates(이미지 및 템플릿) -> Create image(이미지 생성)
+
+![EC2 이미지 생성](./img/EC2_Image_create.png)
