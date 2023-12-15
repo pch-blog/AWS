@@ -125,4 +125,4 @@ $ docker version
 ## EC2 이미지 생성 (AMI:Amazon Machine Image)
 - EC2 대쉬보드에서 Instances(인스턴스) -> EC2 선택(체크 박스) -> Ations(작업) -> Image And templates(이미지 및 템플릿) -> Create image(이미지 생성)
 
-![EC2 이미지 생성](./img/EC2_Image_create.png)
+![EC2 이미지 생성](./img/EC2-Setup-RHEL7.9-ImageCreate.png)
