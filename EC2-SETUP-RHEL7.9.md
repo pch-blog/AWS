@@ -7,6 +7,15 @@
 ~~~
 <br>
 
+## root 계정 비밀번호 설정
+```shell
+$ sudo passwd root
+root 사용자의 비밀 번호 변경 중
+새  암호:
+새  암호 재입력:
+```
+<br>
+
 ## TIMEZONE 확인 및 변경
 ```shell
 $ timedatectl set-timezone Asia/Seoul
@@ -21,7 +30,7 @@ $ useradd -d "홈 디렉토리" -s /bin/bash "계정명"
 
 ## 필요 패키지 설치
 ```shell
-$ yum -y install wget gcc gcc-c++sysstat
+$ yum -y install wget gcc gcc-c++ sysstat vim
 
 # NATS.io
 $ yum -y install git openssl-devel bzip2-devel
@@ -111,3 +120,16 @@ $ systemctl enable docker
 $ docker version
 ```
 <br>
+
+## RHEL 7.9 Docker Image 다운로드
+- https://catalog.redhat.com/software/containers/ubi7/ubi/5c3592dcd70cc534b3a37814?architecture=amd64&tag=all
+```shell
+$ docker pull registry.access.redhat.com/ubi7/ubi:7.9-1255
+$ docker image tag registry.access.redhat.com/ubi7/ubi:7.9-1255 redhat/ubi7:7.9-1255
+```
+```shell
+$ docker images
+REPOSITORY                            TAG        IMAGE ID       CREATED       SIZE
+registry.access.redhat.com/ubi7/ubi   7.9-1255   3e42ff62a586   4 weeks ago   208MB
+redhat/ubi7                           7.9-1255   3e42ff62a586   4 weeks ago   208MB
+```
