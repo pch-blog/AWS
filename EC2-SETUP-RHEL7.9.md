@@ -81,8 +81,18 @@ $ make install
 ```
 <br>
 
-## NATS.io C클라이언트 컴파일 및 설치
+## NATS.io 서버 및 C클라이언트 컴파일 및 설치
 - ec2-user 계정에서 작업
+- NATS.io 서버 설치
+```shell
+# RPM 다운로드 및 설치
+$ wget https://github.com/nats-io/nats-server/releases/download/v2.10.7/nats-server-v2.10.7-amd64.rpm
+$ rpm -i nats-server-v2.10.7-amd64.rpm
+# 위치 확인
+$ which nats-server
+/usr/local/bin/nats-server
+```
+- NATS.io C 클라이언트 설치
 ```shell
 $ git clone https://github.com/nats-io/nats.c.git
 $ cd nats.c
