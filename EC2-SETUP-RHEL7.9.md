@@ -60,6 +60,20 @@ $ aws --version
 ```
 <br>
 
+## AWS ECS Agent 설치
+- https://repost.aws/questions/QUgn5lMAy3Qfye0cQAVPoLjg/rhel-9-를-ecs에서-사용할-수-있는-방법이-있을까요
+- https://aws.amazon.com/ko/premiumsupport/knowledge-center/ecs-create-custom-AMIs
+- ec2-user 계정에서 작업
+```shell
+# ECS Agent 다운로드
+$ curl -o amazon-ecs-init.rpm https://s3.ap-northeast-2.amazonaws.com/amazon-ecs-agent-ap-northeast-2/amazon-ecs-init-latest.x86_64.rpm
+# ECS Agent 설치
+$ yum install -y ./amazon-ecs-init.rpm
+# ECS Agent enable 및 구동
+$ systemctl enable --now ecs
+```
+<br>
+
 ## lz4-devel 설치
 - 해당 OS 이미지의 yum 저장소에서 찾지 못하여 직접 설치
 - ec2-user 계정에서 작업
