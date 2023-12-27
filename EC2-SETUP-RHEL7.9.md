@@ -141,6 +141,10 @@ $ yum install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-
 $ systemctl start docker
 $ systemctl enable docker
 
+# docker 그룹 생성 및 일반 계정 그룹 추가
+$ usermod -aG docker $USER
+$ groups $USER
+
 # docker version check
 $ docker version
 ```
