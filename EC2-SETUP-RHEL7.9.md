@@ -185,7 +185,6 @@ function cleanup() {
     done
 };
 
-
 # Clean up for cloud-init files
 CLOUD_INIT_FILES=(
     "/etc/sudoers.d/90-cloud-init-users"
@@ -209,7 +208,6 @@ else
     fi;
 fi;
 
-
 # Clean up for temporary instance files
 INSTANCE_FILES=(
     "/etc/.updated"
@@ -227,7 +225,6 @@ else
     echo "Cleaning up instance files"
     cleanup "${INSTANCE_FILES[@]}"
 fi;
-
 
 # Clean up for ssh files
 SSH_FILES=(
@@ -369,6 +366,11 @@ sudo touch /etc/machine-id
 ```shell
 # shell 실행
 $ ./cleanup.sh
+```
+- ECS 관련 로그 삭제
+```shell
+$ rm -rf /var/log/ecs/*
+$ rm /var/lib/ecs/data/agent.db
 ```
 - EC2 대쉬보드에서 Instances(인스턴스) -> EC2 선택(체크 박스) -> Ations(작업) -> Image And templates(이미지 및 템플릿) -> Create image(이미지 생성)
 
