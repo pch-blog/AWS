@@ -158,7 +158,7 @@ $ systemctl disable docker.socket
 $ systemctl stop docker.socket
 $ systemctl stop docker.service
 ```
-- ECS 클러스터에서 이용하기 위해 AMI를 생성하기 전 불필요한 파일들을 제거
+- ECS 클러스터에서 이용하기 위해 AMI를 생성하기 전 불필요한 파일들을 제거를 위한 shell 생성 (cleanup.sh)
 ```shell
 $ vi cleanup.sh
 
@@ -363,9 +363,11 @@ fi
 
 sudo touch /etc/machine-id
 ```
+- cleanup.sh 실행
 ```shell
-# shell 실행
+$ chmod 755 cleanup.sh
 $ ./cleanup.sh
+$ rm cleanup.sh
 ```
 - ECS 관련 로그 삭제
 ```shell
