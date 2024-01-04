@@ -32,7 +32,7 @@ $ useradd -d "홈 디렉토리" -s /bin/bash "계정명"
 
 ## 필요 패키지 설치
 ```shell
-$ yum -y install wget gcc gcc-c++ sysstat vim
+$ yum -y install wget gcc gcc-c++ sysstat strace vim
 
 # NATS.io
 $ yum -y install git openssl-devel bzip2-devel
@@ -44,7 +44,7 @@ $ yum -y install yum-utils
 $ yum -y install less unzip jq
 
 # 한 줄
-$ yum -y install wget gcc gcc-c++ sysstat vim git openssl-devel bzip2-devel yum-utils less unzip jq
+$ yum -y install wget gcc gcc-c++ sysstat strace vim git openssl-devel bzip2-devel yum-utils less unzip jq
 ```
 <br>
 
@@ -150,13 +150,28 @@ $ docker version
 ```
 <br>
 
+## 인스턴스 스토리지 사용하는 경우
+- https://docs.aws.amazon.com/ko_kr/AWSEC2/latest/UserGuide/add-instance-store-volumes.html
+- 인스턴스 시작시 생성, 종료시 같이 삭제
+- 해당 내용을 템플릿 하단에 "고급세부정보"에 추가
+```shell
+$ sudo mkfs -t xfs /dev/nvme1n1
+$ sudo mkdir /data
+$ sudo mount /dev/nvme1n1 /data
+```
+<br>
+
+## HOST와 컨테이너를 연결할 디렉토리 생성
+
+<br>
+
 ## EC2 이미지 생성 (AMI:Amazon Machine Image)
 - 필요에 따라 서비스 중지
 ```shell
-$ systemctl stop ecs
-$ systemctl disable docker.socket
-$ systemctl stop docker.socket
-$ systemctl stop docker.service
+$ sudo systemctl stop ecs
+$ sudo systemctl disable docker.socket
+$ sudo systemctl stop docker.socket
+$ sudo systemctl stop docker.service
 ```
 - ECS 클러스터에서 이용하기 위해 AMI를 생성하기 전 불필요한 파일들을 제거를 위한 shell 생성 (cleanup.sh)
 ```shell
