@@ -5,7 +5,8 @@
 - EC2 인스턴스 정보
   Instance type : t3.xlarge
   Disk Info : Size(300GB), Type(gp3), IOPS(10000), Throughput(1000)
-  OS : RHEL-7.9_HVM-20221027-x86_64-0-Access2-GP2
+  AMI : RHEL-7.9_HVM-20221027-x86_64-0-Access2-GP2,
+        RHEL-8.9.0_HVM-20231101-x86_64-11-Access2-GP3
 ~~~
 <br>
 
@@ -78,20 +79,30 @@ $ systemctl enable --now ecs
 - 해당 OS 이미지의 yum 저장소에서 찾지 못하여 직접 설치
 - ec2-user 계정에서 작업
 ```shell
+# 7.9
 $ wget https://rpmfind.net/linux/centos/7.9.2009/os/x86_64/Packages/lz4-devel-1.8.3-1.el7.x86_64.rpm
 $ rpm -i lz4-devel-1.8.3-1.el7.x86_64.rpm
+```
+```shell
+# 8.9
+ yum -y install lz4-devel
 ```
 <br>
 
 ## CMAKE 수동 업데이트
 - ec2-user 계정에서 작업
 ```shell
+# 7.9
 $ wget https://github.com/Kitware/CMake/releases/download/v2.26.4/cmake-3.26.4.tar.gz
 $ tar -zxvf cmake-3.26.5.tar.gz
 $ cd cmake-3.26.5
 $ ./bootstrap
 $ gmakemake
 $ make install
+```
+```shell
+# 8.9
+yum -y install cmake
 ```
 <br>
 
@@ -112,7 +123,9 @@ $ git clone https://github.com/nats-io/nats.c.git
 $ cd nats.c
 $ mkdir build; cd build
 # cmake 컴파일 옵션은 README에서 확인 필요
+# RHEL-7.9
 $ cmake .. -DNATS_BUILD_WITH_TLS=OFF -DNATS_BUILD_STREAMING=OFF
+# RHEL-8.9
 $ make install
 ```
 <br>
@@ -125,7 +138,7 @@ $ make install
 $ yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
 $ vi /etc/yum.repos.d/docker-ce.repo
 ```shell
-# docker-ce.repo 파일에 아래 내용 추가 후 저장 (install 오류로 추가)
+# RHEL-7.9 - docker-ce.repo 파일에 아래 내용 추가 후 저장 (install 오류로 추가)
 [centos-extras]
 name=Centos extras - $basearch
 baseurl=http://mirror.centos.org/centos/7/extras/x86_64
@@ -159,10 +172,6 @@ $ sudo mkfs -t xfs /dev/nvme1n1
 $ sudo mkdir /data
 $ sudo mount /dev/nvme1n1 /data
 ```
-<br>
-
-## HOST와 컨테이너를 연결할 디렉토리 생성
-
 <br>
 
 ## EC2 이미지 생성 (AMI:Amazon Machine Image)
