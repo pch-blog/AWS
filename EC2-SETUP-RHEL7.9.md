@@ -79,20 +79,20 @@ $ systemctl enable --now ecs
 - 해당 OS 이미지의 yum 저장소에서 찾지 못하여 직접 설치
 - ec2-user 계정에서 작업
 ```shell
-# 7.9
+# RHEL-7.9
 $ wget https://rpmfind.net/linux/centos/7.9.2009/os/x86_64/Packages/lz4-devel-1.8.3-1.el7.x86_64.rpm
 $ rpm -i lz4-devel-1.8.3-1.el7.x86_64.rpm
 ```
 ```shell
-# 8.9
- yum -y install lz4-devel
+# RHEL-8.9
+$ yum -y install lz4-devel
 ```
 <br>
 
 ## CMAKE 수동 업데이트
 - ec2-user 계정에서 작업
 ```shell
-# 7.9
+# RHEL-7.9
 $ wget https://github.com/Kitware/CMake/releases/download/v2.26.4/cmake-3.26.4.tar.gz
 $ tar -zxvf cmake-3.26.5.tar.gz
 $ cd cmake-3.26.5
@@ -101,8 +101,8 @@ $ gmakemake
 $ make install
 ```
 ```shell
-# 8.9
-yum -y install cmake
+# RHEL-8.9
+$ yum -y install cmake
 ```
 <br>
 
@@ -121,13 +121,23 @@ $ which nats-server
 ```shell
 $ git clone https://github.com/nats-io/nats.c.git
 $ cd nats.c
-$ mkdir build; cd build
+```
+```shell
 # cmake 컴파일 옵션은 README에서 확인 필요
 # RHEL-7.9
+$ mkdir build; cd build
+# 컴파일러 버전 및 protobuf의 버전 문제로 스트림 관련 함수 사용 불가
 $ cmake .. -DNATS_BUILD_WITH_TLS=OFF -DNATS_BUILD_STREAMING=OFF
-# RHEL-8.9
 $ make install
 ```
+```shell
+# RHEL-8.9
+$ yum -y install protobuf protobuf-c protobuf-c-devel
+$ mkdir build; cd build
+$ cmake .. -DNATS_PROTOBUF_DIR=/usr/lib64 -DNATS_PROTOBUF_LIBRARY=/usr/lib64/libprotobuf-c.so -DNATS_PROTOBUF_INCLUDE_DIR=/usr/include/protobuf-c
+$ make install
+```
+- 클라이언트 개발시 Makefile에 "-DNATS_HAS_STREAMING" 추가
 <br>
 
 ## docker 설치
@@ -156,6 +166,7 @@ $ systemctl enable docker
 
 # docker 그룹 생성 및 일반 계정 그룹 추가
 $ usermod -aG docker $USER
+$ usermod -aG docker "계정명"
 $ groups $USER
 
 # docker version check
