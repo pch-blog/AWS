@@ -130,6 +130,10 @@ $ mkdir build; cd build
 $ cmake .. -DNATS_BUILD_WITH_TLS=OFF -DNATS_BUILD_STREAMING=OFF
 $ make install
 ```
+- 클라이언트 개발 Makefile 추가
+```shell
+NATSLIBS = -lnats_static
+```
 ```shell
 # RHEL-8.9
 $ yum -y install protobuf protobuf-c protobuf-c-devel
@@ -137,7 +141,10 @@ $ mkdir build; cd build
 $ cmake .. -DNATS_PROTOBUF_DIR=/usr/lib64 -DNATS_PROTOBUF_LIBRARY=/usr/lib64/libprotobuf-c.so -DNATS_PROTOBUF_INCLUDE_DIR=/usr/include/protobuf-c
 $ make install
 ```
-- 클라이언트 개발시 Makefile에 "-DNATS_HAS_STREAMING" 추가
+- 클라이언트 개발 Makefile 추가
+```shell
+NATSLIBS = -lnats_static -lprotobuf-c -lssl -lcrypto
+```
 <br>
 
 ## docker 설치
@@ -146,9 +153,8 @@ $ make install
 ```shell
 # add repo
 $ yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
-$ vi /etc/yum.repos.d/docker-ce.repo
-```shell
 # RHEL-7.9 - docker-ce.repo 파일에 아래 내용 추가 후 저장 (install 오류로 추가)
+$ vi /etc/yum.repos.d/docker-ce.repo
 [centos-extras]
 name=Centos extras - $basearch
 baseurl=http://mirror.centos.org/centos/7/extras/x86_64
@@ -158,7 +164,7 @@ gpgkey=http://centos.org/keys/RPM-GPG-KEY-CentOS-7
 ```
 ```shell
 # install docker
-$ yum install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+$ yum -y install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
 # docker start & reboot auto start
 $ systemctl start docker
@@ -196,7 +202,8 @@ $ sudo systemctl stop docker.service
 - ECS 클러스터에서 이용하기 위해 AMI를 생성하기 전 불필요한 파일들을 제거를 위한 shell 생성 (cleanup.sh)
 ```shell
 $ vi cleanup.sh
-
+```
+```shell
 # 이미지 생성전 불필요한 파일 정리를 위해 내용 추가
 #!/bin/bash
 if [[ ! -f {{workingDirectory}}/perform_cleanup ]]; then
