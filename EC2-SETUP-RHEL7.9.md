@@ -50,7 +50,7 @@ $ yum -y install wget gcc gcc-c++ sysstat strace vim systemd git openssl-devel b
 <br>
 
 ## AWS CLI 설치
-- https://docs.aws.amazon.com/ko_kr/cli/latest/userguide/getting-started-install.html
+- [AWS - 최신 버전의 AWS CLI 설치 또는 업데이트](https://docs.aws.amazon.com/ko_kr/cli/latest/userguide/getting-started-install.html)
 - ec2-user 계정에서 작업
 ```shell
 $ curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
@@ -62,8 +62,8 @@ $ aws --version
 <br>
 
 ## AWS ECS Agent 설치
-- https://repost.aws/questions/QUgn5lMAy3Qfye0cQAVPoLjg/rhel-9-를-ecs에서-사용할-수-있는-방법이-있을까요
-- https://aws.amazon.com/ko/premiumsupport/knowledge-center/ecs-create-custom-AMIs
+- [AWS - RHEL9를 ECS에서 사용할 수 있는 방법이 있을까요?](https://repost.aws/questions/QUgn5lMAy3Qfye0cQAVPoLjg/rhel-9-를-ecs에서-사용할-수-있는-방법이-있을까요)
+- [AWS - Amazon ECS에서 사용자 지정 AMI를 생성하고 사용하려면 어떻게 해야 하나요?](https://aws.amazon.com/ko/premiumsupport/knowledge-center/ecs-create-custom-AMIs)
 - ec2-user 계정에서 작업
 ```shell
 # ECS Agent 다운로드
@@ -148,7 +148,7 @@ NATSLIBS = -lnats_static -lprotobuf-c -lssl -lcrypto
 <br>
 
 ## docker 설치
-- https://docs.docker.com/engine/install/centos/
+- [Docker 설치 가이드 (CentOS)](https://docs.docker.com/engine/install/centos/)
 - ec2-user 계정에서 작업
 ```shell
 # add repo
@@ -180,8 +180,22 @@ $ docker version
 ```
 <br>
 
+## 오라클 클라이언트 설치
+- [설치 가이드](https://docs.oracle.com/en/database/oracle/oracle-database/21/lacli/install-instant-client-using-rpm.html#GUID-2E81E2AE-E94C-413F-99B2-AE9A3949F05D)
+- [다운로드 페이지](https://www.oracle.com/kr/database/technologies/instant-client/linux-x86-64-downloads.html#ic_x64_inst)
+```shell
+yum install libaio
+wget https://download.oracle.com/otn_software/linux/instantclient/2112000/oracle-instantclient-basic-21.12.0.0.0-1.el8.x86_64.rpm
+rpm -i oracle-instantclient-basic-21.12.0.0.0-1.el8.x86_64.rpm
+```
+```shell
+ls /usr/lib/oracle/21/client64/bin
+adrci  genezi
+```
+<br>
+
 ## 인스턴스 스토리지 사용하는 경우
-- https://docs.aws.amazon.com/ko_kr/AWSEC2/latest/UserGuide/add-instance-store-volumes.html
+- [AWS EC2 인스턴스 스토리지 설명](https://docs.aws.amazon.com/ko_kr/AWSEC2/latest/UserGuide/add-instance-store-volumes.html)
 - 인스턴스 시작시 생성, 종료시 같이 삭제
 - 해당 내용을 템플릿 하단에 "고급세부정보"에 추가
 ```shell
