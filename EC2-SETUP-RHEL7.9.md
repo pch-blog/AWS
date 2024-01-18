@@ -33,7 +33,7 @@ $ useradd -d "홈 디렉토리" -s /bin/bash "계정명"
 
 ## 필요 패키지 설치
 ```shell
-$ yum -y install wget gcc gcc-c++ sysstat strace vim
+$ yum -y install wget gcc gcc-c++ sysstat strace vim systemd
 
 # NATS.io
 $ yum -y install git openssl-devel bzip2-devel
@@ -45,7 +45,7 @@ $ yum -y install yum-utils
 $ yum -y install less unzip jq
 
 # 한 줄
-$ yum -y install wget gcc gcc-c++ sysstat strace vim git openssl-devel bzip2-devel yum-utils less unzip jq
+$ yum -y install wget gcc gcc-c++ sysstat strace vim systemd git openssl-devel bzip2-devel yum-utils less unzip jq
 ```
 <br>
 
