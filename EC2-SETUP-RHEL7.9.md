@@ -44,8 +44,11 @@ $ yum -y install yum-utils
 # AWS CLI
 $ yum -y install less unzip jq
 
-# 한 줄
-$ yum -y install wget gcc gcc-c++ sysstat strace vim systemd git openssl-devel bzip2-devel yum-utils less unzip jq
+# AWS EFS
+# Using the NFS clien
+$ yum -y install nfs-utils
+# Using the EFS mount helper
+$ yum -y install git make rpm-build
 ```
 <br>
 
@@ -70,10 +73,10 @@ $ aws --version
 $ curl -o amazon-ecs-init.rpm https://s3.ap-northeast-2.amazonaws.com/amazon-ecs-agent-ap-northeast-2/amazon-ecs-init-latest.x86_64.rpm
 # ECS Agent 설치
 $ yum install -y ./amazon-ecs-init.rpm
-# ECS Agent enable 및 구동
-$ systemctl enable ecs
+# ECS Agent 시작
+$ systemctl start ecs
 # 컨테이너가 EFS 연결하기위해 필요
-$ systemctl enable amazon-ecs-volume-plugin
+$ systemctl start amazon-ecs-volume-plugin
 
 SSM? 설치
 curl -o amazon-ssm-agent.tar.gz https://amazon-ssm-ap-northeast-2.s3.ap-northeast-2.amazonaws.com/latest/linux_amd64/amazon-ssm-agent-binaries.tar.gz
@@ -210,12 +213,18 @@ $ sudo mount /dev/nvme1n1 /data
 <br>
 
 ## EC2 이미지 생성 (AMI:Amazon Machine Image)
+- 중지 및 로그 정리 후 인스턴스 중지 및 재부팅 진행 (권한 문제로 /etc/ecs/ecs.config를 생성 불가로 ECS 에이전트 실행 불가)
 - 필요에 따라 서비스 중지
 ```shell
 $ sudo systemctl stop ecs
 $ sudo systemctl stop amazon-ecs-volume-plugin
 $ sudo systemctl stop docker.socket
 $ sudo systemctl stop docker.service
+```
+- ECS 로그 및 Agent 파일 삭제
+```shell
+$ sudo rm -rf /var/log/ecs/*
+$ sudo rm /var/lib/ecs/data/agent.db
 ```
 - ECS 클러스터에서 이용하기 위해 AMI를 생성하기 전 불필요한 파일들을 제거를 위한 shell 생성 (cleanup.sh)
 ```shell
