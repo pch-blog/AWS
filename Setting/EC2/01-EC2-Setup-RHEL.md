@@ -9,6 +9,10 @@
 
 ## Table of Contents
 - [기본 설정](#기본-설정)
+    - [root 계정 비밀번호 설정](#root-계정-비밀번호-설정)
+    - [TIMEZONE 확인 및 변경](#timezone-확인-및-변경)
+    - [계정 추가](#계정-추가)
+    - [패키지 업데이트 및 설치](#패키지-업데이트-및-설치)
 - [인스턴스 스토리지를 사용하는 경우](#인스턴스-스토리지-사용하는-경우)
 - [AMI(Amazon Machine Image) 생성](#amiamazon-machine-image-생성)
 <br>
