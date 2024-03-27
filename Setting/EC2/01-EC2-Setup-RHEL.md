@@ -35,7 +35,7 @@ $ useradd -d "홈 디렉토리" -s /bin/bash "계정명"
 ### 패키지 업데이트 및 설치
 ```shell
 $ sudo yum -y update
-$ sudo yum -y install git wget gcc gcc-c++ sysstat strace vim systemd net-tools yum-utils
+$ sudo yum -y install git wget sysstat strace vim systemd net-tools yum-utils
 ```
 <br>
 
@@ -50,6 +50,7 @@ $ sudo mkdir /data
 $ sudo mount /dev/nvme1n1 /data
 ```
 ![EC2 인스턴스 스토리지 설정](./img/EC2-InstanceStoreSet.png)
+
 <br>
 
 ## AMI(Amazon Machine Image) 생성

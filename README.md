@@ -5,8 +5,8 @@
 <br>
 
 ## Maps of Content
-1. [AWS-Service-Program-Installation](./01-AWS-Service-Program-Installation.md)
 ### Setting
+1. [AWS-Service-Program-Installation](./01-AWS-Service-Program-Installation.md)
 - EC2
   1. [EC2-Setup-RHEL](./EC2/Setting/01-EC2-Setup-RHEL.md)
 - ECS
