@@ -110,7 +110,7 @@ $ hostnamectl
 # OR
 $ uname -r
 ```
-- 각각의 OS 버전벼 설치 과정에 따라 [Lustre 클라이언트 설치](https://docs.aws.amazon.com/ko_kr/fsx/latest/LustreGuide/install-lustre-client.html#lustre-client-rhel)에 수정해야하는 버전을 확인하면 됩니다.
+- 각각의 OS 버전벼 설치 과정에 따라 [Lustre 클라이언트 설치](https://docs.aws.amazon.com/ko_kr/fsx/latest/LustreGuide/install-lustre-client.html#lustre-client-rhel)에 수정해야 하는 버전을 확인하면 됩니다.
 - specific_RHEL_version 값을 정하여 저장소 구성 파일을 수정합니다.
 ```shell
 $ sudo sed -i 's#8#specific_RHEL_version#' /etc/yum.repos.d/aws-fsx.repo
@@ -128,8 +128,8 @@ $ rm -rf /tmp/fsx-rpm-public-key.asc
 ```
 
 ### - EFS 오류1. 패키지 저장소에서 nfs-utils를 찾지 못 하는 경우
-- AWS의 RHEL AMI와 도커허브에 잇는 RHEL 컨테이너 이미지의 라이센스 차이로 패키지 저장소 위치가 서로 다르기 때문에 컨테이너 이미지 빌드 시점에 nfs-utils 설치에 문제가 있으며 amazon-efs-utils 설치에도 영향이 있습니다.
-- nfs-utils의 의존성 확인하고 yumdownloader를 사용하여 각 패키지 다운로드하여 수동 설치하는 방법으로 진행합니다.
+- AWS의 RHEL AMI와 Docker Hub의 Red Hat Universal Base Image의 패키지 저장소 위치가 서로 다르기 때문에 컨테이너 이미지 빌드 시점에 nfs-utils 설치에 문제가 있으며 amazon-efs-utils 설치에도 영향이 있습니다.
+- nfs-utils 패키지 설치가 가능한 서버에서 nfs-utils의 패키지 의존성 확인하고 yumdownloader를 사용하여 각 패키지 다운로드하여 수동 설치하는 방법으로 진행합니다.
 - 패키지의 RPM을 다운로드 받기위해 yum-downloadonly을 설치합니다.
 ```shell
 $ sudo yum install -y yum-downloadonly
