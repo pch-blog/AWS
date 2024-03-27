@@ -14,8 +14,8 @@
 
 ## Reference
 - [AWS Command Line Interface (AWS CLI)](https://docs.aws.amazon.com/ko_kr/cli/)
-- [Amazon Elastic Compute Cloud (EC2) - Linux 인스턴스용 사용 설명서](https://docs.aws.amazon.com/ko_kr/AWSEC2/latest/UserGuide/concepts.html)
-- [Amazon Elastic Container Service (ECS) - 개발자 가이드](https://docs.aws.amazon.com/ko_kr/AmazonECS/latest/developerguide/Welcome.html)
-- [Amazon FSx - FSx for Lustre 설명서](https://docs.aws.amazon.com/ko_kr/fsx/latest/LustreGuide/what-is.html)
-- [Amazon Elastic File System (EFS) - 사용자 가이드](https://docs.aws.amazon.com/ko_kr/efs/latest/ug/whatisefs.html)
+- [AWS Elastic Compute Cloud (EC2) - Linux 인스턴스용 사용 설명서](https://docs.aws.amazon.com/ko_kr/AWSEC2/latest/UserGuide/concepts.html)
+- [AWS Elastic Container Service (ECS) - 개발자 가이드](https://docs.aws.amazon.com/ko_kr/AmazonECS/latest/developerguide/Welcome.html)
+- [AWS Elastic File System (EFS) - 사용자 가이드](https://docs.aws.amazon.com/ko_kr/efs/latest/ug/whatisefs.html)
+- [AWS FSx - FSx for Lustre 설명서](https://docs.aws.amazon.com/ko_kr/fsx/latest/LustreGuide/what-is.html)
 <br>
