@@ -54,7 +54,7 @@ $ sudo rm /var/lib/ecs/data/agent.db
 <br>
 
 ## AWS EFS, FSx
-### EFS
+### - EFS
 - [다른 Linux 배포판에 Amazon EFS 클라이언트 설치](https://docs.aws.amazon.com/ko_kr/efs/latest/ug/installing-amazon-efs-utils.html#installing-other-distro)
 - ec2-user 계정에서 작업
 - 기본적으로 EFS를 사용하기 위해서는 <b>nfs-utils, amazon-efs-utils</b>가 설치되어 있어야 합니다.
@@ -82,9 +82,7 @@ $ sudo systemctl stop amazon-ecs-volume-plugin
 - 파일 시스템의 마운트 상태를 CloudWatch 모니터링이 필요한 경우 [botocore 설치](https://docs.aws.amazon.com/ko_kr/efs/latest/ug/install-botocore.html)
 - EFS 데이터 암호화를 하려면 [stunnel 설치 및 업그레이드](https://docs.aws.amazon.com/ko_kr/efs/latest/ug/upgrading-stunnel.html)
 
-<br>
-
-### FSx Lustre
+### - FSx Lustre
 - [Lustre 클라이언트 설치](https://docs.aws.amazon.com/ko_kr/fsx/latest/LustreGuide/install-lustre-client.html#lustre-client-rhel)에서 OS의 버전에 따라 설치 과정을 진행합니다.
 - ec2-user 계정에서 작업
 - Amazon FSx RPM 퍼블릭 키 다운로드 및 가져오기
@@ -128,9 +126,8 @@ $ rm -rf /tmp/fsx-rpm-public-key.asc
 ```shell
 $ rm -rf /tmp/fsx-rpm-public-key.asc
 ```
-<br>
 
-### EFS 오류1. 패키지 저장소에서 nfs-utils를 찾지 못 하는 경우
+### - EFS 오류1. 패키지 저장소에서 nfs-utils를 찾지 못 하는 경우
 - AWS의 RHEL AMI와 도커허브에 잇는 RHEL 컨테이너 이미지의 라이센스 차이로 패키지 저장소 위치가 서로 다르기 때문에 컨테이너 이미지 빌드 시점에 nfs-utils 설치에 문제가 있으며 amazon-efs-utils 설치에도 영향이 있습니다.
 - nfs-utils의 의존성 확인하고 yumdownloader를 사용하여 각 패키지 다운로드하여 수동 설치하는 방법으로 진행합니다.
 - 패키지의 RPM을 다운로드 받기위해 yum-downloadonly을 설치합니다.
@@ -139,12 +136,12 @@ $ sudo yum install -y yum-downloadonly
 ```
 - nfs-utils 수동 설치에 필요한 RPM 패키지 다운로드 합니다.
 ```shell
-$ sudo yum install -y yum-downloadonly
 $ mkdir RPM; cd RPM
-# 컨테이너 이미지 빌드 시점에 나오는 오류 기준으로 뽑은 패키지
-$ sudo yumdownloader nfs-utils gssproxy keyutils kmod libevent libnfsidmap python3-pyyaml quota rpcbind libbasicobjects \
-libcollection libini_config libref_array libverto-module-base libini_config libev e2fsprogs quota-nls e2fsprogs-libs \
-fuse-libs libss-1.45.6-5.el8
+# 의존성 확인의 패키지 목록이 아니며 컨테이너 이미지 빌드 시점에 나오는 오류 기준으로 뽑은 패키지
+$ sudo yumdownloader nfs-utils gssproxy keyutils kmod libevent libnfsidmap \
+                     python3-pyyaml quota rpcbind libbasicobjects libcollection \
+					 libini_config libref_array libverto-module-base libini_config \
+					 libev e2fsprogs quota-nls e2fsprogs-libs fuse-libs libss-1.45.6-5.el8
 $ sudo rm -f *i686.rpm; sudo chown $USER *rpm; sudo chgrp $USER *rpm
 ```
 - nfs-utils 의존성 확인 및 의존성 기준 다운로드

@@ -14,7 +14,7 @@
 <br>
 
 ## 기본 설정
-### root 계정 비밀번호 설정
+### - root 계정 비밀번호 설정
 ```shell
 $ sudo passwd root
 root 사용자의 비밀 번호 변경 중
@@ -22,17 +22,17 @@ root 사용자의 비밀 번호 변경 중
 새  암호 재입력:
 ```
 
-### TIMEZONE 확인 및 변경
+### - TIMEZONE 확인 및 변경
 ```shell
 $ timedatectl set-timezone Asia/Seoul
 ```
 
-### 계정 추가
+### - 계정 추가
 ```shell
 $ useradd -d "홈 디렉토리" -s /bin/bash "계정명"
 ```
 
-### 패키지 업데이트 및 설치
+### - 패키지 업데이트 및 설치
 ```shell
 $ sudo yum -y update
 $ sudo yum -y install git wget sysstat strace vim systemd net-tools yum-utils
