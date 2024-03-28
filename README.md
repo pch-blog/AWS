@@ -1,7 +1,6 @@
 # AWS
 ## Overview
-- AWS 서비스 개념 정리
-- AWS 서비스 사용을 위한 설정 및 과정 저리
+- AWS EC2, ECS
 <br>
 
 ## Maps of Content
