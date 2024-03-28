@@ -1,17 +1,27 @@
 # ECS-TaskDefinitions
-- ECS의 클러스터가 서비스 시작에 사용할 태스크를 정의하는 과정 정리
-- JSON 파일 수정으로 태스크 정의를 작성하는 방법 정리
+- ECS의 클러스터가 서비스 시작에 사용하는 태스크를 정의하는 과정 정리
+- [ECS 작업 정의 설명서](https://docs.aws.amazon.com/ko_kr/AmazonECS/latest/developerguide/task_definitions.html)
+- [ECS 태스크 정의 파라미터](https://docs.aws.amazon.com/ko_kr/AmazonECS/latest/developerguide/task_definition_parameters.html)
 <br>
 
 ## Table of Contents
-- [JSON을 통한 구성(Configure via JSON)](#json을-통한-구성configure-via-json)
+- [태스크 정의 확인사항](#태스크-정의-확인사항)
+- [JSON 수정으로만 구성 가능한 파라미터](#json-수정으로만-구성-가능한-파라미터)
 	- [privileged 모드 추가](#privileged-모드-추가)
 	- [pid 모드 추가](#pid-모드-추가)
 	- [ipc 모드 추가](#ipc-모드-추가)
 
 <br>
 
-## JSON을 통한 구성(Configure via JSON)
+## 태스크 정의 확인사항
+- 네트워크 모드를 awsvpc로 사용하면 해당 서브넷이 "인터넷 게이트웨이"를 사용하더라도 컨테이너에 퍼블릭IP 할당이 안됩니다.
+- awsvpc모드는 태스크당 ENI 하나씩 가지며, EC2의 인스턴스 기본 인터페이스를 제외한 나머지 ENI 수 만큼 태스크가 실행 가능합니다.<br>인스턴스 유형 마다 ENI의 제한이 있으며 <b>"AWSVPC 트렁킹"을 활성화하면 더 많은 ENI 사용 가능합니다.</b> - [탄력적 네트워크 인터페이스 트렁킹](https://docs.aws.amazon.com/ko_kr/AmazonECS/latest/developerguide/container-instance-eni.html?icmpid=docs_ecs_hp_account_settings)
+- 태스크 크기(Task size)에서 vCPU, 메모리를 설정하면 컨테이너의 리소스 할당도 태스크 크기 내에서만 지정 가능하기 때문에 태스크의 vCPU, 메모리를 빈 칸으로 정의해야 EC2의 vCPU, 메모리를 컨테이너에 원활하게 할당 가능합니다.<br>(태스크 크기에서 10vCPU가 최대, 메모리는 vCPU 값에 따라 다름)
+
+<br>
+
+## JSON 수정으로만 구성 가능한 파라미터
+- UI로 태스크 정의시 나오지 않는 메뉴 같은 경우 JSON 파일을 직접 수정해야 합니다.
 ### privileged 모드 추가
 - [ECS 개발자가이드 - 태스크 정의 파라미터 - 보안 - privileged](https://docs.aws.amazon.com/ko_kr/AmazonECS/latest/developerguide/task_definition_parameters.html#container_definition_security)
 - containerDefinitions 영역에 privileged 모드 추가
