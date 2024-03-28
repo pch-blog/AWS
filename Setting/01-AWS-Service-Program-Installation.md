@@ -1,4 +1,4 @@
-# 01-AWS-Service-Program-Installation
+# AWS-Service-Program-Installation
 - AWS의 서비스를 하기위해 RHEL 기준 각 서비스의 프로그램이나 에이전트, 유틸 설치 과정 정리
 <br>
 
