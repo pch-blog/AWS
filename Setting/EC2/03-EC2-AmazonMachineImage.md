@@ -13,6 +13,7 @@
 ## AMI(Amazon Machine Image) 생성 사전 작업
 ### Docker를 설치한 경우
 - 필요한 경우 docker 서비스를 중지합니다.
+
     ```shell
     $ sudo systemctl stop docker.socket
     $ sudo systemctl stop docker.service
@@ -24,6 +25,7 @@
     $ sudo systemctl stop ecs
     $ sudo systemctl stop amazon-ecs-volume-plugin
     ```
+
 - 로그 및 Agent 관련 파일 삭제
     ```shell
     $ sudo rm -rf /etc/ecs/ecs.config
@@ -33,6 +35,7 @@
 
 ### 불필요한 파일들을 제거를 위한 shell 생성 및 실행
 - shell 생성
+
     ```shell
     $ vi cleanup.sh
     ```
@@ -187,12 +190,16 @@
     $ ./cleanup.sh
     $ rm cleanup.sh
     ```
+
 <br>
 
 ## AMI(Amazon Machine Image) 생성
 - AMI 생성 사전 작업 후 <b>권한 문제 및 기타 문제 방지를 위해 설정이 완료된 상태에서 인스턴스 재부팅 진행</b>
+
 - "EC2 -> 인스턴스(Instances) -> EC2 선택(체크 박스) -> 작억(Ations) -> 이미지 및 템플릿(Image And templates) -> 이미지 생성(Create image)"
-<br><br>
-![EC2 이미지 생성](./img/03-EC2-AmazonMachineImage-01.png)
+<br>
+
+    ![EC2 이미지 생성](./img/03-EC2-AmazonMachineImage-01.png)
+</br>
 
 <br>

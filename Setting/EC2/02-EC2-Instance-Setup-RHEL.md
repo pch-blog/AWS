@@ -3,6 +3,7 @@
 
 - 사용 AMI
 	- <b>EC2 -> Images -> AMI Catalog</b> 메뉴에서 검색
+
 	- RHEL-7.9_HVM-20221027-x86_64-0-Access2-GP2 (ami-0de638ae3a9404d04)
 	- RHEL-8.9.0_HVM-20240213-x86_64-3-Access2-GP3 (ami-09e760896c8f55abe)
 
