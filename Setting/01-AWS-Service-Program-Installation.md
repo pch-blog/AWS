@@ -1,5 +1,5 @@
 # AWS-Service-Program-Installation
-- AWS의 서비스를 하기위해 RHEL 기준 각 서비스의 프로그램이나 에이전트, 유틸 설치 과정 정리
+- AWS의 서비스를 하기위해 RHEL 기준 각 서비스의 프로그램이나 에이전트, 유틸 설치 과정을 정리합니다.
 <br>
 
 ## Table of Contents
@@ -12,7 +12,7 @@
 <br>
 
 ## AWS CLI
-- [AWS - 최신 버전의 AWS CLI 설치 또는 업데이트](https://docs.aws.amazon.com/ko_kr/cli/latest/userguide/getting-started-install.html)
+- [최신 버전의 AWS CLI 설치 또는 업데이트](https://docs.aws.amazon.com/ko_kr/cli/latest/userguide/getting-started-install.html)
 - ec2-user 계정에서 작업
 ```shell
 $ sudo yum -y install less unzip jq
@@ -26,8 +26,8 @@ $ aws --version
 <br>
 
 ## AWS ECS Agent
-- [AWS - RHEL9를 ECS에서 사용할 수 있는 방법이 있을까요?](https://repost.aws/questions/QUgn5lMAy3Qfye0cQAVPoLjg/rhel-9-를-ecs에서-사용할-수-있는-방법이-있을까요)
-- [AWS - Amazon ECS에서 사용자 지정 AMI를 생성하고 사용하려면 어떻게 해야 하나요?](https://aws.amazon.com/ko/premiumsupport/knowledge-center/ecs-create-custom-AMIs)
+- [RHEL9를 ECS에서 사용할 수 있는 방법이 있을까요?](https://repost.aws/questions/QUgn5lMAy3Qfye0cQAVPoLjg/rhel-9-를-ecs에서-사용할-수-있는-방법이-있을까요)
+- [Amazon ECS에서 사용자 지정 AMI를 생성하고 사용하려면 어떻게 해야 하나요?](https://aws.amazon.com/ko/premiumsupport/knowledge-center/ecs-create-custom-AMIs)
 - ec2-user 계정에서 작업
 - 다운로드 및 설치
 ```shell
@@ -56,7 +56,7 @@ $ sudo rm /var/lib/ecs/data/agent.db
 <br>
 
 ## AWS EFS, FSx
-### - EFS
+### EFS
 - [다른 Linux 배포판에 Amazon EFS 클라이언트 설치](https://docs.aws.amazon.com/ko_kr/efs/latest/ug/installing-amazon-efs-utils.html#installing-other-distro)
 - ec2-user 계정에서 작업
 - 기본적으로 EFS를 사용하기 위해서는 <b>nfs-utils, amazon-efs-utils</b>가 설치되어 있어야 합니다.
@@ -84,7 +84,7 @@ $ sudo systemctl stop amazon-ecs-volume-plugin
 - 파일 시스템의 마운트 상태를 CloudWatch 모니터링이 필요한 경우 [botocore 설치](https://docs.aws.amazon.com/ko_kr/efs/latest/ug/install-botocore.html)
 - EFS 데이터 암호화를 하려면 [stunnel 설치 및 업그레이드](https://docs.aws.amazon.com/ko_kr/efs/latest/ug/upgrading-stunnel.html)
 
-### - FSx Lustre
+### FSx Lustre
 - [Lustre 클라이언트 설치](https://docs.aws.amazon.com/ko_kr/fsx/latest/LustreGuide/install-lustre-client.html#lustre-client-rhel)에서 OS의 버전에 따라 설치 과정을 진행합니다.
 - ec2-user 계정에서 작업
 - Amazon FSx RPM 퍼블릭 키 다운로드 및 가져오기
@@ -129,7 +129,7 @@ $ rm -rf /tmp/fsx-rpm-public-key.asc
 $ rm -rf /tmp/fsx-rpm-public-key.asc
 ```
 
-### - EFS 오류1. 패키지 저장소에서 nfs-utils를 찾지 못 하는 경우
+### EFS 오류1. 패키지 저장소에서 nfs-utils를 찾지 못 하는 경우
 - AWS의 RHEL AMI와 Docker Hub의 Red Hat Universal Base Image의 패키지 저장소 위치가 서로 다르기 때문에 컨테이너 이미지 빌드 시점에 nfs-utils 설치에 문제가 있으며 amazon-efs-utils 설치에도 영향이 있습니다.
 - nfs-utils 패키지 설치가 가능한 서버에서 nfs-utils의 패키지 의존성 확인하고 yumdownloader를 사용하여 각 패키지 다운로드하여 수동 설치하는 방법으로 진행합니다.
 - 패키지의 RPM을 다운로드 받기위해 yum-downloadonly을 설치합니다.

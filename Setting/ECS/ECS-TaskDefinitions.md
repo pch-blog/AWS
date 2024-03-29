@@ -1,5 +1,5 @@
 # ECS-TaskDefinitions
-- ECS의 클러스터가 서비스 시작에 사용하는 태스크를 정의하는 과정 정리
+- ECS의 클러스터가 서비스 시작에 사용하는 태스크를 정의하는 과정을 정리합니다.
 - [ECS 작업 정의 설명서](https://docs.aws.amazon.com/ko_kr/AmazonECS/latest/developerguide/task_definitions.html)
 - [ECS 태스크 정의 파라미터](https://docs.aws.amazon.com/ko_kr/AmazonECS/latest/developerguide/task_definition_parameters.html)
 <br>

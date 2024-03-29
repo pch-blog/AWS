@@ -1,14 +1,22 @@
 # AWS
 ## Overview
-- AWS EC2, ECS
+- AWS의 주 서비스들을 설정하고 사용하는 방법을 정리합니다.
+-
 <br>
 
 ## Maps of Content
 ### Setting
 1. [AWS-Service-Program-Installation](./01-AWS-Service-Program-Installation.md)
+
 - EC2
-  1. [EC2-Setup-RHEL](./EC2/Setting/01-EC2-Setup-RHEL.md)
+  1. [EC2-Instance-Start](./Setting/EC2/01-EC2-Instance-Start.md)
+  2. [EC2-Instance-Setup-RHEL](./Setting/EC2/02-EC2-Instance-Setup-RHEL.md)
+  3. [EC2-AmazonMachineImage](./Setting/EC2/03-EC2-AmazonMachineImage.md)
+
 - ECS
+  1. [ECS-ServiceDiscovery](./Setting/ECS/ECS-ServiceDiscovery.md)
+  2. [ECS-TaskDefinitions](./Setting/ECS/ECS-TaskDefinitions.md)
+
 <br>
 
 ## Reference

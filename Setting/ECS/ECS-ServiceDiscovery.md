@@ -1,5 +1,5 @@
 # ECS-ServiceDiscovery
-- ECS에서 서비스검색(ServiceDiscovery) 기능을 사용하기 위해 설정하는 과정을 정리하였습니다.
+- ECS에서 서비스검색(ServiceDiscovery) 기능을 사용하기 위해 설정하는 과정을 정리합니다.
 <br>
 
 ## Table of Contents
