@@ -1,4 +1,4 @@
-# EC2-InstanceSetup-RHEL
+# EC2-Instance-Setup-RHEL
 - RHEL의 AMI를 사용하여 인스턴스를 생성 후 설정하는 과정 정리
 - 설정에 사용한 AMI
 	- <b>EC2 -> Images -> AMI Catalog</b> 메뉴에서 검색

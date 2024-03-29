@@ -1,4 +1,4 @@
-# EC2-InstanceStart
+# EC2-Instance-Start
 - AWS에서 기본적으로 사용하게될 EC2 인스턴스를 생성하고 설정하는 과정을 정리
 <br>
 
