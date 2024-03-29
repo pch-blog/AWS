@@ -1,15 +1,23 @@
 # EC2-AmazonMachineImage
-- 인스턴스 [설정](01-EC2-InstanceSetup-RHEL.md) 후 AMI를 생성하기위한 작업 정리
+- 인스턴스 생성, 설정 후 AMI 생성을 위한 과정을 정리합니다.
 <br>
 
 ## Table of Contents
 - [AMI(Amazon Machine Image) 생성 사전 작업](#amiamazon-machine-image-생성-사전-작업)
 
 - [AMI(Amazon Machine Image) 생성](#amiamazon-machine-image-생성)
+
 <br>
 
 ## AMI(Amazon Machine Image) 생성 사전 작업
 - <b>권한 문제 및 기타 문제 방지를 위해 설정이 완료된 상태에서 인스턴스 재부팅 진행</b>
+
+### ECS Agent를 설치한 경우
+- 로그 및 Agent 관련 파일 삭제
+    ```shell
+    $ sudo rm -rf /var/log/ecs/*
+    $ sudo rm /var/lib/ecs/data/agent.db
+    ```
 
 - AMI를 생성하기 전 불필요한 파일들을 제거를 위한 shell 생성
     ```shell
@@ -166,9 +174,12 @@
     $ ./cleanup.sh
     $ rm cleanup.sh
     ```
+
 <br>
 
 ## AMI(Amazon Machine Image) 생성
 - "EC2 -> 인스턴스(Instances) -> EC2 선택(체크 박스) -> 작억(Ations) -> 이미지 및 템플릿(Image And templates) -> 이미지 생성(Create image)"
 <br><br>
 ![EC2 이미지 생성](./img/EC2-AMI-Create.png)
+
+<br>

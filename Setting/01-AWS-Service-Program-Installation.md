@@ -4,11 +4,11 @@
 
 ## Table of Contents
 - [AWS CLI](#aws-cli)
+
 - [AWS ECS Agent](#aws-ecs-agent)
+
 - [AWS EFS, FSx](#aws-efs-fsx)
-	- [EFS](#efs)
-	- [FSx Lustre](#fsx-lustre)
-	- [EFS 오류1. 패키지 저장소에서 nfs-utils를 찾지 못 하는 경우](#efs-오류1-패키지-저장소에서-nfs-utils를-찾지-못-하는-경우)
+
 <br>
 
 ## AWS CLI
@@ -22,6 +22,7 @@ $ sudo ./install
 $ which aws
 $ aws --version
 ```
+
 <br>
 
 ## AWS ECS Agent
@@ -51,6 +52,7 @@ $ sudo systemctl stop ecs
 $ sudo rm -rf /var/log/ecs/*
 $ sudo rm /var/lib/ecs/data/agent.db
 ```
+
 <br>
 
 ## AWS EFS, FSx
@@ -158,9 +160,5 @@ RUN yum -y install ./*rpm
 WORKDIR /
 RUN rm -rf RPM
 ```
+
 <br>
-
-
-
-
-

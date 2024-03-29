@@ -1,5 +1,5 @@
 # EC2-Instance-Setup-ETC
-- 인스턴스 생성 후 기타 설정
+- OS 기준 설정을 제외한 공통적인 설정 부분을 정리합니다.
 <br>
 
 ## Table of Contents
