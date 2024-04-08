@@ -15,7 +15,9 @@
 
   3. [EC2-AmazonMachineImage](./Setting/EC2/03-EC2-AmazonMachineImage.md)
 
-  3. [EC2-AmazonMachineImage](./Setting/EC2/03-EC2-AmazonMachineImage.md)
+  4. [EC2-LaunchTemplates](./Setting/EC2/04-EC2-LaunchTemplates.md)
+
+  5. [EC2-AutoScalingGroups](./Setting/EC2/05-EC2-AutoScalingGroups.md)
 
 - ECS
   1. [ECS-ServiceDiscovery](./Setting/ECS/ECS-ServiceDiscovery.md)
